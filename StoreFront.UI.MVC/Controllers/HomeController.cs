@@ -18,6 +18,16 @@ namespace StoreFront.UI.MVC.Controllers
             return View();
         }
 
+        public IActionResult Shop()
+        {
+            return View();
+        }
+
+        public IActionResult ShopDetail()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
