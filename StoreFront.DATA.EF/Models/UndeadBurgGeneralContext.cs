@@ -201,7 +201,7 @@ namespace StoreFront.DATA.EF.Models
                     .HasConstraintName("FK_Wares_StockStatus");
 
                 entity.HasOne(d => d.Type)
-                    .WithMany(p => p.Wares)
+                    .WithMany(p => p.Ware)
                     .HasForeignKey(d => d.TypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Wares_Type");

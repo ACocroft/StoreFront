@@ -55,7 +55,7 @@ namespace StoreFront.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Type1,TypeId")] Type @type)
+        public async Task<IActionResult> Create([Bind("Type1,TypeId")] DATA.EF.Models.Type @type)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace StoreFront.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Type1,TypeId")] Type @type)
+        public async Task<IActionResult> Edit(int id, [Bind("Type1,TypeId")] DATA.EF.Models.Type @type)
         {
             if (id != @type.TypeId)
             {
