@@ -11,34 +11,6 @@
     <Content Remove="Views\Shared\_OriginalLayout.cshtml" />
     <Content Remove="wwwroot\css\style.css" />
     <Content Remove="wwwroot\css\style.min.css" />
-    <Content Remove="wwwroot\img\carousel-1.jpg" />
-    <Content Remove="wwwroot\img\carousel-2.jpg" />
-    <Content Remove="wwwroot\img\cat-1.jpg" />
-    <Content Remove="wwwroot\img\cat-2.jpg" />
-    <Content Remove="wwwroot\img\cat-3.jpg" />
-    <Content Remove="wwwroot\img\cat-4.jpg" />
-    <Content Remove="wwwroot\img\cat-5.jpg" />
-    <Content Remove="wwwroot\img\cat-6.jpg" />
-    <Content Remove="wwwroot\img\offer-1.png" />
-    <Content Remove="wwwroot\img\offer-2.png" />
-    <Content Remove="wwwroot\img\payments.png" />
-    <Content Remove="wwwroot\img\product-1.jpg" />
-    <Content Remove="wwwroot\img\product-2.jpg" />
-    <Content Remove="wwwroot\img\product-3.jpg" />
-    <Content Remove="wwwroot\img\product-4.jpg" />
-    <Content Remove="wwwroot\img\product-5.jpg" />
-    <Content Remove="wwwroot\img\product-6.jpg" />
-    <Content Remove="wwwroot\img\product-7.jpg" />
-    <Content Remove="wwwroot\img\product-8.jpg" />
-    <Content Remove="wwwroot\img\user.jpg" />
-    <Content Remove="wwwroot\img\vendor-1.jpg" />
-    <Content Remove="wwwroot\img\vendor-2.jpg" />
-    <Content Remove="wwwroot\img\vendor-3.jpg" />
-    <Content Remove="wwwroot\img\vendor-4.jpg" />
-    <Content Remove="wwwroot\img\vendor-5.jpg" />
-    <Content Remove="wwwroot\img\vendor-6.jpg" />
-    <Content Remove="wwwroot\img\vendor-7.jpg" />
-    <Content Remove="wwwroot\img\vendor-8.jpg" />
     <Content Remove="wwwroot\js\main.js" />
     <Content Remove="wwwroot\lib\easing\easing.js" />
     <Content Remove="wwwroot\lib\easing\easing.min.js" />
@@ -161,34 +133,6 @@
     <None Include="Views\_ViewStart.cshtml" />
     <None Include="wwwroot\css\style.css" />
     <None Include="wwwroot\css\style.min.css" />
-    <None Include="wwwroot\img\carousel-1.jpg" />
-    <None Include="wwwroot\img\carousel-2.jpg" />
-    <None Include="wwwroot\img\cat-1.jpg" />
-    <None Include="wwwroot\img\cat-2.jpg" />
-    <None Include="wwwroot\img\cat-3.jpg" />
-    <None Include="wwwroot\img\cat-4.jpg" />
-    <None Include="wwwroot\img\cat-5.jpg" />
-    <None Include="wwwroot\img\cat-6.jpg" />
-    <None Include="wwwroot\img\offer-1.png" />
-    <None Include="wwwroot\img\offer-2.png" />
-    <None Include="wwwroot\img\payments.png" />
-    <None Include="wwwroot\img\product-1.jpg" />
-    <None Include="wwwroot\img\product-2.jpg" />
-    <None Include="wwwroot\img\product-3.jpg" />
-    <None Include="wwwroot\img\product-4.jpg" />
-    <None Include="wwwroot\img\product-5.jpg" />
-    <None Include="wwwroot\img\product-6.jpg" />
-    <None Include="wwwroot\img\product-7.jpg" />
-    <None Include="wwwroot\img\product-8.jpg" />
-    <None Include="wwwroot\img\user.jpg" />
-    <None Include="wwwroot\img\vendor-1.jpg" />
-    <None Include="wwwroot\img\vendor-2.jpg" />
-    <None Include="wwwroot\img\vendor-3.jpg" />
-    <None Include="wwwroot\img\vendor-4.jpg" />
-    <None Include="wwwroot\img\vendor-5.jpg" />
-    <None Include="wwwroot\img\vendor-6.jpg" />
-    <None Include="wwwroot\img\vendor-7.jpg" />
-    <None Include="wwwroot\img\vendor-8.jpg" />
     <None Include="wwwroot\js\main.js" />
     <None Include="wwwroot\lib\easing\easing.js" />
     <None Include="wwwroot\lib\easing\easing.min.js" />
@@ -300,6 +244,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.18" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.18" />
@@ -309,6 +254,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.14" />
+    <PackageReference Include="MimeKit" Version="4.1.0" />
+    <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
