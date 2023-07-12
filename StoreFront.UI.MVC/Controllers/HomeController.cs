@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StoreFront.UI.MVC.Models;
 using System.Diagnostics;
-using System.Net.Mail;
 using MimeKit;
-using MailKit;
+using MailKit.Net.Smtp;
 
 namespace StoreFront.UI.MVC.Controllers
 {
@@ -12,9 +11,10 @@ namespace StoreFront.UI.MVC.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _config;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IConfiguration config)
         {
             _logger = logger;
+            _config = config;
         }
 
         public IActionResult Index()
@@ -32,7 +32,7 @@ namespace StoreFront.UI.MVC.Controllers
             return View();
         }
 
-        public IActionResult GetContact()
+        public IActionResult Contact()
         {
             return View();
         }
@@ -53,10 +53,10 @@ namespace StoreFront.UI.MVC.Controllers
 
             var mm = new MimeMessage();
 
-            mm.From.Add(new MailboxAddress("Sender", _config.GetValue<string>("Credentials:Emails:User")));
+            mm.From.Add(new MailboxAddress("noreply", _config.GetValue<string>("Credentials:Email:User")));
 
 
-            mm.To.Add(new MailboxAddress("Personal", _config.GetValue<string>("Credentials:Emails:Recipient")));
+            mm.To.Add(new MailboxAddress("Personal", _config.GetValue<string>("Credentials:Email:Recipient")));
 
             mm.Subject = cvm.Subject;
 
@@ -68,13 +68,13 @@ namespace StoreFront.UI.MVC.Controllers
 
             using (var client = new SmtpClient())
             {
-                client.Connect(_config.GetValue<string>("Credentials:Emails:Client"));
+                client.Connect(_config.GetValue<string>("Credentials:Email:Client"));
 
                 client.Authenticate(
 
-                    _config.GetValue<string>("Credentials:Emails:User"),
+                    _config.GetValue<string>("Credentials:Email:User"),
 
-                    _config.GetValue<string>("Credentials:Emails:Password")
+                    _config.GetValue<string>("Credentials:Email:Password")
 
                     );
                 try

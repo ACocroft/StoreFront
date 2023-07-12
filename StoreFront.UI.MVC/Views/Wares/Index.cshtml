@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<StoreFront.DATA.EF.Models.Ware>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Browse my wares!";
 }
 
-<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,7 +12,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Wares)
+                @Html.DisplayNameFor(model => model.WaresName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -40,7 +39,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Wares)
+                @Html.DisplayFor(modelItem => item.WaresName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

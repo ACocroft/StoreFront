@@ -5,7 +5,12 @@ namespace StoreFront.DATA.EF.Models
 {
     public partial class Ware
     {
-        public string Wares { get; set; } = null!;
+        public Ware()
+        {
+            OrderWares = new HashSet<OrderWare>();
+        }
+
+        public string WaresName { get; set; } = null!;
         public int WaresId { get; set; }
         public string Description { get; set; } = null!;
         public int TypeId { get; set; }
@@ -17,5 +22,6 @@ namespace StoreFront.DATA.EF.Models
         public virtual Manufacturer Manufacturer { get; set; } = null!;
         public virtual StockStatus StockStatus { get; set; } = null!;
         public virtual Type Type { get; set; } = null!;
+        public virtual ICollection<OrderWare> OrderWares { get; set; }
     }
 }

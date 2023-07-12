@@ -7,12 +7,12 @@ namespace StoreFront.DATA.EF.Models
     {
         public Type()
         {
-            Ware = new HashSet<Ware>();
+            Wares = new HashSet<Ware>();
         }
 
         public string Type1 { get; set; } = null!;
         public int TypeId { get; set; }
 
-        public virtual ICollection<Ware> Ware { get; set; }
+        public virtual ICollection<Ware> Wares { get; set; }
     }
 }

@@ -23,8 +23,11 @@ namespace StoreFront.DATA.EF.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; } = null!;
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; } = null!;
         public virtual DbSet<Manufacturer> Manufacturers { get; set; } = null!;
+        public virtual DbSet<Order> Orders { get; set; } = null!;
+        public virtual DbSet<OrderWare> OrderWares { get; set; } = null!;
         public virtual DbSet<StockStatus> StockStatuses { get; set; } = null!;
         public virtual DbSet<Type> Types { get; set; } = null!;
+        public virtual DbSet<UserDetail> UserDetails { get; set; } = null!;
         public virtual DbSet<Ware> Wares { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -32,7 +35,7 @@ namespace StoreFront.DATA.EF.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server=.\\sqlexpress;database=UndeadBurgGeneral;trusted_connection=true;multipleactiveresultsets=true;");
+                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=UndeadBurgGeneral;Trusted_Connection=true;MultipleActiveResultSets=true;");
             }
         }
 
@@ -142,6 +145,44 @@ namespace StoreFront.DATA.EF.Models
                 entity.Property(e => e.MaufacturerCountry).HasMaxLength(50);
             });
 
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
+
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+
+                entity.Property(e => e.OrderDate).HasColumnType("date");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Orders_UserDetails");
+            });
+
+            modelBuilder.Entity<OrderWare>(entity =>
+            {
+                entity.HasKey(e => e.OrderId);
+
+                entity.Property(e => e.OrderId)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("OrderID");
+
+                entity.Property(e => e.WaresId).HasColumnName("WaresID");
+
+                entity.HasOne(d => d.Order)
+                    .WithOne(p => p.OrderWare)
+                    .HasForeignKey<OrderWare>(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_OrderWares_Orders");
+
+                entity.HasOne(d => d.Wares)
+                    .WithMany(p => p.OrderWares)
+                    .HasForeignKey(d => d.WaresId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_OrderWares_Wares");
+            });
+
             modelBuilder.Entity<StockStatus>(entity =>
             {
                 entity.ToTable("StockStatus");
@@ -165,10 +206,21 @@ namespace StoreFront.DATA.EF.Models
                     .HasColumnName("Type");
             });
 
+            modelBuilder.Entity<UserDetail>(entity =>
+            {
+                entity.HasKey(e => e.UserId);
+
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+
+                entity.Property(e => e.UserName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<Ware>(entity =>
             {
                 entity.HasKey(e => e.WaresId)
-                    .HasName("PK_Wares_1");
+                    .HasName("PK_Wares_Name");
 
                 entity.Property(e => e.WaresId).HasColumnName("WaresID");
 
@@ -184,7 +236,7 @@ namespace StoreFront.DATA.EF.Models
 
                 entity.Property(e => e.TypeId).HasColumnName("TypeID");
 
-                entity.Property(e => e.Wares)
+                entity.Property(e => e.WaresName)
                     .HasMaxLength(75)
                     .IsUnicode(false);
 
@@ -201,7 +253,7 @@ namespace StoreFront.DATA.EF.Models
                     .HasConstraintName("FK_Wares_StockStatus");
 
                 entity.HasOne(d => d.Type)
-                    .WithMany(p => p.Ware)
+                    .WithMany(p => p.Wares)
                     .HasForeignKey(d => d.TypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Wares_Type");
