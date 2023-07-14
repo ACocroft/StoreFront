@@ -17,7 +17,7 @@ namespace StoreFront.DATA.EF.Models/*Metadata*/
     [ModelMetadataType(typeof(WaresMetadata))]
     public partial class Wares
     {
-
+        public int WaresPrice { get; set; }
     }
 
 }
