@@ -14,10 +14,27 @@ namespace StoreFront.DATA.EF.Models/*Metadata*/
 
     }
 
+    [ModelMetadataType(typeof(OrderMetadata))]
+    public partial class Order
+    {
+
+    }
+
     [ModelMetadataType(typeof(WaresMetadata))]
     public partial class Wares
     {
         public int WaresPrice { get; set; }
     }
 
+    [ModelMetadataType(typeof(ManufacturerMetadata))]
+    public partial class Manufacturer
+    {
+
+    }
+
+    [ModelMetadataType(typeof(UserDetailMetadata))]
+    public partial class UserDetail
+    {
+        public string FullName { get { return $"{UserName}"; } }
+    }
 }

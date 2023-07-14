@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Shared\_OriginalLayout.cshtml" />
     <Content Remove="wwwroot\css\style.css" />
     <Content Remove="wwwroot\css\style.min.css" />
     <Content Remove="wwwroot\js\main.js" />
@@ -122,8 +121,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Home\Contact.cshtml" />
+    <None Include="Views\Home\EmailConfirmation.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Home\Shop.cshtml" />
+    <None Include="Views\Home\ShopDetail.cshtml" />
     <None Include="Views\Shared\_OriginalLayout.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\Shared\_LoginPartial.cshtml" />
@@ -246,14 +249,19 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.18" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.18" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.18" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.18">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.20">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.20">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
     <PackageReference Include="MimeKit" Version="4.1.0" />
     <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
