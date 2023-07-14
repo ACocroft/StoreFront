@@ -149,7 +149,9 @@ namespace StoreFront.DATA.EF.Models
             {
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
-                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+                entity.Property(e => e.CustomerId)
+                    .HasMaxLength(128)
+                    .HasColumnName("CustomerID");
 
                 entity.Property(e => e.OrderDate).HasColumnType("date");
 
@@ -157,24 +159,22 @@ namespace StoreFront.DATA.EF.Models
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Orders_UserDetails");
+                    .HasConstraintName("FK_Orders_UserDetails1");
             });
 
             modelBuilder.Entity<OrderWare>(entity =>
             {
-                entity.HasKey(e => e.OrderId);
+                entity.Property(e => e.OrderWareId).HasColumnName("OrderWareID");
 
-                entity.Property(e => e.OrderId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("OrderID");
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
                 entity.Property(e => e.WaresId).HasColumnName("WaresID");
 
                 entity.HasOne(d => d.Order)
-                    .WithOne(p => p.OrderWare)
-                    .HasForeignKey<OrderWare>(d => d.OrderId)
+                    .WithMany(p => p.OrderWares)
+                    .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_OrderWares_Orders");
+                    .HasConstraintName("FK_OrderWares_Orders1");
 
                 entity.HasOne(d => d.Wares)
                     .WithMany(p => p.OrderWares)
@@ -210,7 +210,19 @@ namespace StoreFront.DATA.EF.Models
             {
                 entity.HasKey(e => e.UserId);
 
-                entity.Property(e => e.UserId).HasColumnName("UserID");
+                entity.Property(e => e.UserId)
+                    .HasMaxLength(128)
+                    .HasColumnName("UserID");
+
+                entity.Property(e => e.City)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Country)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.FullName).HasMaxLength(100);
 
                 entity.Property(e => e.UserName)
                     .HasMaxLength(50)
