@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,23 +75,76 @@ namespace StoreFront.DATA.EF.Models/*Metadata*/
 
     #endregion
 
-    //#region Manufacturer
-    //public class ManufacturerMetadata
-    //{
-    //    public int ManufacturerId { get; set; }
-    //    [Required]
-    //    [StringLength(50)]
-    //    [Display(Name = "Manufacturer")]
-    //    public string ManufacturerName { get; set; } = null!;
+    #region Manufacturer
+    public class ManufacturerMetadata
+    {
+        public int ManufacturerId { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Manufacturer")]
+        public string ManufacturerName { get; set; } = null!;
 
-    //    [Required]
-    //    [StringLength(50)]
-    //    public string City { get; set; } = null!;
+        [Required]
+        [StringLength(50)]
+        public string City { get; set; } = null!;
 
-    //    [Required]
-    //    [StringLength(50)]
-    //    public string? Country { get; set; } = null!;
-    //}
-    //#endregion
+        [Required]
+        [StringLength(50)]
+        public string? Country { get; set; } = null!;
+    }
+    #endregion
+
+    public class OrderMetadata
+    {
+        
+        public int OrderId { get; set; }
+
+        
+        public string UserId { get; set; } = null!;
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        [Display(Name = "Order Date")]
+        [Required]
+        public DateTime OrderDate { get; set; }
+
+        [StringLength(100)]
+        [Display(Name = "Ship To")]
+        [Required]
+        public string ShipToName { get; set; } = null!;
+
+        [StringLength(50)]
+        [Display(Name = "City")]
+        [Required]
+        public string ShipCity { get; set; } = null!;
+
+        [StringLength(2)]
+        [Display(Name = "State")]
+        public string? ShipCountry { get; set; }
+
+    }
+
+    #region UserDetail
+    public class UserDetailMetadata
+    {
+        public string UserId { get; set; } = null!;
+        [StringLength(50)]
+        [Display(Name = "Full Name")]
+        [Required]
+        public string UserName { get; set; } = null!;
+        [StringLength(100)]
+        
+        public string? Address { get; set; }
+        [StringLength(50)]
+        public string? City { get; set; }
+        [StringLength(2)]
+        public string? State { get; set; }
+        [StringLength(5)]
+        [DataType(DataType.PostalCode)]
+        public string? Zip { get; set; }
+        [StringLength(24)]
+        [DataType(DataType.PhoneNumber)]
+        public string? Phone { get; set; }
+    }
+    #endregion
+
 
 }

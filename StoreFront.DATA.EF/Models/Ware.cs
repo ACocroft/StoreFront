@@ -22,6 +22,7 @@ namespace StoreFront.DATA.EF.Models
         public virtual Manufacturer Manufacturer { get; set; } = null!;
         public virtual StockStatus StockStatus { get; set; } = null!;
         public virtual Type Type { get; set; } = null!;
+        public virtual OrderWare OrderWare { get; set; } = null!;
         public virtual ICollection<OrderWare> OrderWares { get; set; }
     }
 }
