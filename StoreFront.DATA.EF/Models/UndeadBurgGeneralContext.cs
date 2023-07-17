@@ -35,7 +35,7 @@ namespace StoreFront.DATA.EF.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=UndeadBurgGeneral;Trusted_Connection=true;MultipleActiveResultSets=true;");
+                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=UndeadBurgGeneral;Trusted_connection=true;MultipleActiveResultSets=true;");
             }
         }
 
@@ -168,6 +168,8 @@ namespace StoreFront.DATA.EF.Models
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
+                entity.Property(e => e.Price).HasColumnType("money");
+
                 entity.Property(e => e.WaresId).HasColumnName("WaresID");
 
                 entity.HasOne(d => d.Order)
@@ -222,9 +224,11 @@ namespace StoreFront.DATA.EF.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.FullName).HasMaxLength(100);
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.UserName)
+                entity.Property(e => e.LastName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
             });
@@ -247,6 +251,8 @@ namespace StoreFront.DATA.EF.Models
                 entity.Property(e => e.StockStatusId).HasColumnName("StockStatusID");
 
                 entity.Property(e => e.TypeId).HasColumnName("TypeID");
+
+                entity.Property(e => e.WareImage).HasMaxLength(75);
 
                 entity.Property(e => e.WaresName)
                     .HasMaxLength(75)

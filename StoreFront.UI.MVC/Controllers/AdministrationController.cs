@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace StoreFront.UI.MVC.Controllers//Update namespace
+namespace StoreFront.UI.MVC.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller

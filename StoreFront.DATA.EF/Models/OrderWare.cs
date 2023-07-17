@@ -8,10 +8,10 @@ namespace StoreFront.DATA.EF.Models
         public int OrderWareId { get; set; }
         public int OrderId { get; set; }
         public int WaresId { get; set; }
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
+        public decimal? Price { get; set; }
 
         public virtual Order Order { get; set; } = null!;
         public virtual Ware Wares { get; set; } = null!;
-        public decimal? Price { get; set; }
     }
 }

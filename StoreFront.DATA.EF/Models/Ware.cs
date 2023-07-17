@@ -18,11 +18,11 @@ namespace StoreFront.DATA.EF.Models
         public int ManufacturerId { get; set; }
         public int StockStatusId { get; set; }
         public int? Quantity { get; set; }
+        public string? WareImage { get; set; }
 
         public virtual Manufacturer Manufacturer { get; set; } = null!;
         public virtual StockStatus StockStatus { get; set; } = null!;
         public virtual Type Type { get; set; } = null!;
-        public virtual OrderWare OrderWare { get; set; } = null!;
         public virtual ICollection<OrderWare> OrderWares { get; set; }
     }
 }

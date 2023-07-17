@@ -11,9 +11,10 @@ namespace StoreFront.DATA.EF.Models
         }
 
         public string UserId { get; set; } = null!;
-        public string UserName { get; set; } = null!;
+        public string FirstName { get; set; } = null!;
         public string? City { get; set; }
-        public string? Country { get; set; }
+        public string Country { get; set; } = null!;
+        public string LastName { get; set; } = null!;
 
         public virtual ICollection<Order> Orders { get; set; }
     }
