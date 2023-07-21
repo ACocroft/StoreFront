@@ -37,6 +37,11 @@ namespace StoreFront.UI.MVC.Controllers
             return View();
         }
 
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Contact(ContactViewModel cvm)
         {
